@@ -1,0 +1,89 @@
+<?php session_start(); ?>
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8">
+        <title>Avantcy Webbyrå - Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type"text/css" href="css/normalize.css">
+		<link rel="stylesheet" type"text/css" href="css/main.css">
+		<link rel="stylesheet" type"text/css" href="css/style.css">
+</head>
+<div id="header">
+    		<div id="headerContent">
+	    		<div id="logo">
+	    		<a href="index.html"><img src="images/logo.png" alt="Medieinstitutet"></a>
+	    		</div>
+	    		<nav id="menu">
+	    			<ul>
+	    				<li><a href="omoss.html">Om oss</a></li>
+	    				<li><a href="kontakt.html">Blogg</a></li>
+	    				<li><a href="kontakt.html">Kontakt</a></li>
+	    			</ul>
+	    		</nav>
+	    		<div id="menuItem">
+	    		<img src="images/meny.png" alt="Meny">
+	    		</div>
+	    		<div class="clearfix"></div>
+    		</div>
+    	</div>
+    	<nav>
+	    	<ul id="first-menu">
+	    		<li><a class="top-level" href="omoss.html">Om oss</a>
+	    		</li>
+
+	    		<li><a class="top-level" href="kontakt.html">Blogg</a>
+	    		</li>
+
+	    		<li><a class="top-level" href="kontakt.html">Kontakt</a>
+	    		</li>
+	    	</ul>
+	    </nav>	
+	    <div id="content">
+	    <div id="login">
+	    <?php
+
+	if(isset($_GET["login"]) && $_GET["login"] == "fail"){
+		?><div id="failedLogin"><? echo "Fel användarnamn/löseord"; ?></div>
+		<?php
+
+	}
+
+	if(!isset($_SESSION["loggedIn"]) || $_SESSION["loggedIn"] == FALSE){
+	?>
+	<h1>Logga in</h1>
+	<form method="post" action="checkLogin.php">
+		<input type="text" name="username" placeholder="Användarnamn" value="matildarask"/>
+		<input type="password" name="password" placeholder="Lösenord" value="van#vett1"/>
+		<br/>
+		<input type="submit" value="Logga in" />
+	</form>
+	<?php
+}else{
+	echo "du är redan inloggad";
+	?>
+	<a href="logout.php">Logga ut</a>
+	<?php
+}
+//session_destroy();
+?>
+
+	    	</div>
+	    </div>
+	    <div id="contentContainer">
+	    </div>
+
+	  <div id="footer">
+		<div id="footerContent">
+			<p><a href="mailto:info@avantcy.se">info@avantcy.se</a></p>
+			<a href="#"><div id="facebook"></div></a>
+			<a href="#"><div id="twitter"></div></a>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	    <script src="jquery-1.10.2.min.js" style="text/javascript"></script>	
+        <script src="js/main.js"></script>
+    </body>
+	
+</html>
